@@ -1,0 +1,3 @@
+
+def salam():
+    return "salam"
