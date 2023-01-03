@@ -6,13 +6,13 @@ import glob
 import numpy as np
 
 # Opens the inbuilt camera of laptop to capture video.
-cap = cv2.VideoCapture("/home/python/project/website/python_funcs/20230102_120604.mp4")
+cap = cv2.VideoCapture("/home/python/project/website/python_funcs/dataset/20230102_120604.mp4")
 # videoClip = VideoFileClip("/home/python/project/django/kambiz/python_funcs/tyser.mp4")
 # videoClip.write_gif("my-life.gif")
 success, image = cap.read()
 x,y,h = image.shape
 frame_count = 0
-step =10
+step =1
 counter = step
 # cv2.imshow("ali",image)
 while success:
@@ -32,8 +32,9 @@ frameSize = (int(y),int(x))
 # img_bg = np.zeros((y,x,3),np.uint8)
 out = cv2.VideoWriter('output_video.avi',cv2.VideoWriter_fourcc(*'DIVX'), 10, frameSize)
 
-for filename in glob.glob("extracted_images/*.jpg"):
-    img = cv2.imread(filename)
+# for filename in glob.glob("extracted_images/*.jpg"):
+for filename in range(64):
+    img = cv2.imread(f"extracted_images/{filename}.jpg")
     out.write(img)
 
 out.release()
