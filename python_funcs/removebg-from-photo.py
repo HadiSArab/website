@@ -1,11 +1,17 @@
 from rembg import remove
 from PIL import Image
+import cv2
+import glob
 
-input_path = ['IMG_1539.JPG','IMG_1543.JPG','IMG_1565.JPG','IMG_1592.JPG']
-output_path = '/home/python/project/website/python_funcs/out{}.png'
+output_path = '/home/python/project/website/python_funcs/3/out/out{}.png'
 s = 1
-for i in input_path:
-    input = Image.open(i)
+for filename in glob.glob('/home/python/project/website/python_funcs/3/*.JPG'):
+    # img = cv2.imread(filename)
+
+    input = Image.open(filename)
     output = remove(input)
     output.save(output_path.format(s))
     s+=1
+
+
+
